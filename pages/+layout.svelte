@@ -28,4 +28,10 @@
 		font-weight: 600;
 		font-size: 1.1rem;
 	}
+	/* Hide SQL query UI buttons */
+	:global(button[aria-label="show-sql"]),
+	:global(button[aria-label="view-query"]),
+	:global(.svelte-1granpn) {
+		display: none !important;
+	}
 </style>

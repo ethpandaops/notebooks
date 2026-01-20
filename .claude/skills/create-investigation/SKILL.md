@@ -1,10 +1,4 @@
-# Create Investigation Skill
-
-This skill guides the creation of new investigation pages for the ethPandaOps notebooks site.
-
-## Trigger
-
-User says `/create-investigation` or asks to create a new investigation/analysis page.
+# Create notebook page
 
 ## Workflow
 
@@ -176,6 +170,6 @@ ORDER BY date
 
 - **Sidebar auto-populates** from folder structure - just create the page!
 - Always test locally with `npm run dev` before pushing
-- For point-in-time investigations, ensure data is uploaded to R2 before deploying
+- For point-in-time investigations, ensure data is uploaded to R2 before deploying. Usually via `AWS_PROFILE=r2` and `aws cli`.
 - Use meaningful commit messages that describe the investigation
 - Use `sidebar_position` to control ordering (lower = higher in list)

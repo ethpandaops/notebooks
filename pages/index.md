@@ -3,28 +3,10 @@ title: ethPandaOps Notebooks
 sidebar_position: 0
 ---
 
-Welcome to the ethPandaOps notebooks. Data-driven analyses of the Ethereum blockchain using data collected by [Xatu](https://github.com/ethpandaops/xatu).
+Ethereum network analyses using [Xatu](https://github.com/ethpandaops/xatu) data. Dashboards refresh hourly. Investigations are one-off analyses that may use live or snapshot data.
 
-## Dashboards
+Use the sidebar to navigate.
 
-High-level overview dashboards for monitoring network health and performance.
+---
 
-**[View Dashboards](/notebooks/dashboards)**
-
-## Investigations
-
-Deep-dive analyses into specific aspects of the Ethereum network.
-
-<Alert status="info">
-
-**Live investigations** query ClickHouse at build time and are refreshed daily.
-
-**Point-in-time investigations** use pre-baked data snapshots for reproducibility.
-
-</Alert>
-
-**[View Investigations](/notebooks/investigations)**
-
-## About
-
-Built with [Evidence](https://evidence.dev) and maintained by [ethPandaOps](https://ethpandaops.io).
+Built with [Evidence](https://evidence.dev). Maintained by [ethPandaOps](https://ethpandaops.io).
