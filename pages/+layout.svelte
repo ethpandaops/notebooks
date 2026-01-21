@@ -10,6 +10,7 @@
 	{data}
 	logo="{base}/logo.png"
 	builtWithEvidence={false}
+	maxWidth={1600}
 >
 	<slot slot="content" />
 </EvidenceDefaultLayout>
@@ -34,5 +35,15 @@
 	:global(button[aria-label="view-query"]),
 	:global(.svelte-1granpn) {
 		display: none !important;
+	}
+
+	/* Hide breadcrumbs */
+	:global(main > div.print\:hidden:first-child) {
+		display: none !important;
+	}
+
+	/* Center chart titles */
+	:global(.chart-title) {
+		text-align: center !important;
 	}
 </style>
