@@ -1,4 +1,5 @@
 <script>
+    import { base } from '$app/paths';
     export let source = '';
     export let query = '';
 
@@ -8,7 +9,7 @@
     // Fetch the SQL file from the static folder
     async function loadSql() {
         try {
-            const response = await fetch(`/notebooks/sql/${source}/${query}.sql`);
+            const response = await fetch(`${base}/sql/${source}/${query}.sql`);
             if (response.ok) {
                 sqlContent = await response.text();
             } else {
