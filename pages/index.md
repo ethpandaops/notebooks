@@ -35,7 +35,7 @@ h1:first-of-type { display: none !important; }
         <div style="color: #3d3a2a; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.4rem;">Private Blob Submitters</div>
         <div style="font-size: 0.85rem; color: #6b6560; line-height: 1.5;">Who posts blobs that bypass the public mempool?</div>
     </a>
-    <a href="/investigations/2026-01/head-vote-accuracy" style="display: block; padding: 1.5rem 1.75rem; background: rgba(248,247,243,0.5); border-left: 4px solid #ddd9d1; text-decoration: none; transition: all 0.15s ease-out;">
+    <a href="/investigations/2026-01/head-accuracy-by-entity" style="display: block; padding: 1.5rem 1.75rem; background: rgba(248,247,243,0.5); border-left: 4px solid #ddd9d1; text-decoration: none; transition: all 0.15s ease-out;">
         <div style="font-family: ui-monospace, monospace; font-size: 0.6rem; letter-spacing: 0.12em; color: #9a958d; text-transform: uppercase; margin-bottom: 0.5rem;">Jan 20</div>
         <div style="color: #3d3a2a; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.4rem;">Head Vote Accuracy</div>
         <div style="font-size: 0.85rem; color: #6b6560; line-height: 1.5;">How often do validators correctly vote for the chain head?</div>
