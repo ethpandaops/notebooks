@@ -254,4 +254,116 @@
 		margin-bottom: 1.25rem !important;
 		margin-left: 0.75rem !important;
 	}
+
+	/* ========== DARK MODE ========== */
+
+	/* Header - dark background */
+	:global(.dark header) {
+		background:
+			url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"),
+			linear-gradient(180deg, #1a1918 0%, #141312 100%) !important;
+		box-shadow:
+			0 1px 0 #2a2725,
+			0 4px 12px -4px rgba(0, 0, 0, 0.3) !important;
+	}
+
+	/* Header text - light for dark mode */
+	:global(.dark header a[href="/investigations/"]::after) {
+		color: #e8e5dc !important;
+		text-shadow:
+			1px 1px 0 rgba(0,0,0,0.5),
+			-0.5px -0.5px 0 rgba(255, 255, 255, 0.05) !important;
+	}
+
+	:global(.dark header a[href="/investigations/"]::before) {
+		color: #6b6560 !important;
+	}
+
+	/* Sidebar - dark mode */
+	:global(.dark aside.w-48) {
+		border-left-color: #bb5a38 !important;
+	}
+
+	:global(.dark aside .font-semibold) {
+		color: #6b6560 !important;
+	}
+
+	:global(.dark aside a.font-semibold:hover),
+	:global(.dark aside span.font-semibold:hover) {
+		color: #9a958d !important;
+	}
+
+	:global(.dark aside a.py-1:not(.font-semibold)),
+	:global(.dark aside span.py-1:not(.font-semibold)) {
+		color: #9a958d !important;
+	}
+
+	:global(.dark aside a.py-1:not(.font-semibold):hover) {
+		color: #e8e5dc !important;
+		background: linear-gradient(90deg, rgba(187, 90, 56, 0.15) 0%, transparent 100%) !important;
+	}
+
+	:global(.dark aside .text-primary) {
+		color: #d4a090 !important;
+		background: linear-gradient(90deg, rgba(187, 90, 56, 0.2) 0%, transparent 100%) !important;
+	}
+
+	:global(.dark aside .text-base-content-muted) {
+		color: #9a958d !important;
+	}
+
+	:global(.dark aside .text-base-content-muted:hover) {
+		color: #e8e5dc !important;
+	}
+
+	:global(.dark aside > div > div:first-child .font-semibold) {
+		color: #e8e5dc !important;
+	}
+
+	:global(.dark aside > div > div.pb-6:not(:first-child)::before) {
+		background: #2a2725 !important;
+	}
+
+	/* Landing page cards - dark mode */
+	:global(.dark article a[href*="/investigations/"]) {
+		background: linear-gradient(135deg, rgba(30, 28, 26, 0.9) 0%, rgba(26, 25, 24, 1) 100%) !important;
+		border-left-color: #bb5a38 !important;
+	}
+
+	:global(.dark article a[href*="/investigations/"] > div:first-child) {
+		color: #bb5a38 !important;
+	}
+
+	:global(.dark article a[href*="/investigations/"] > div:nth-child(2)) {
+		color: #e8e5dc !important;
+	}
+
+	:global(.dark article a[href*="/investigations/"] > div:nth-child(3)) {
+		color: #9a958d !important;
+	}
+
+	/* Landing page hero text - dark mode */
+	:global(.dark article > div > div > div:first-child) {
+		color: #e8e5dc !important;
+		text-shadow: 1px 1px 0 rgba(0,0,0,0.5) !important;
+	}
+
+	:global(.dark article > div > div > p) {
+		color: #9a958d !important;
+	}
+
+	:global(.dark article > div > div > p a) {
+		color: #d4a090 !important;
+	}
+
+	/* Footer - dark mode */
+	:global(.dark article > div:last-child) {
+		border-top-color: #2a2725 !important;
+		color: #6b6560 !important;
+	}
+
+	:global(.dark article > div:last-child a) {
+		color: #9a958d !important;
+		border-bottom-color: #3d3a2a !important;
+	}
 </style>
