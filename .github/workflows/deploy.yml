@@ -46,7 +46,7 @@ jobs:
 
       - name: Build Evidence Site
         env:
-          BASE_PATH: /notebooks
+          BASE_PATH: /investigations
         run: |
           npm run sources
           npm run build
