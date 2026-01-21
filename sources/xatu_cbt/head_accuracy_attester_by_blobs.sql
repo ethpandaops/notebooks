@@ -1,6 +1,5 @@
 -- Attester-based head vote accuracy by entity type and blob count
 -- Shows: How does entity X's head accuracy change with blob count?
--- Uses 1 week due to table size
 -- Note: "Other" excluded from this query due to performance constraints
 WITH validator_entities AS (
     SELECT
@@ -24,7 +23,7 @@ SELECT
 FROM mainnet.fct_attestation_correctness_by_validator_head h
 INNER JOIN validator_entities ve ON h.attesting_validator_index = ve.validator_index
 LEFT JOIN mainnet.fct_block_blob_count_head b FINAL ON h.slot = b.slot
-WHERE h.slot_start_date_time >= now() - INTERVAL 1 WEEK
+WHERE h.slot_start_date_time >= '2025-12-21' AND h.slot_start_date_time < '2026-01-21'
 AND h.slot_distance IS NOT NULL
 GROUP BY entity_group, blob_count
 ORDER BY entity_group, blob_count

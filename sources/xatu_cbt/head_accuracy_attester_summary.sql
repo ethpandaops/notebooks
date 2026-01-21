@@ -1,6 +1,5 @@
 -- Attester-based head vote accuracy summary by entity type
 -- Shows: What % of entity X's attestations vote for the correct head?
--- Uses 1 week due to table size
 -- Uses UNION approach to include "Other" without expensive full join
 WITH validator_entities AS (
     SELECT
@@ -23,7 +22,7 @@ known_groups AS (
         count(*) as total
     FROM mainnet.fct_attestation_correctness_by_validator_head h
     INNER JOIN validator_entities ve ON h.attesting_validator_index = ve.validator_index
-    WHERE h.slot_start_date_time >= now() - INTERVAL 1 WEEK
+    WHERE h.slot_start_date_time >= '2025-12-21' AND h.slot_start_date_time < '2026-01-21'
     AND h.slot_distance IS NOT NULL
     GROUP BY entity_group
 ),
@@ -33,7 +32,7 @@ network_totals AS (
         countIf(slot_distance = 0) as correct_head,
         count(*) as total
     FROM mainnet.fct_attestation_correctness_by_validator_head
-    WHERE slot_start_date_time >= now() - INTERVAL 1 WEEK
+    WHERE slot_start_date_time >= '2025-12-21' AND slot_start_date_time < '2026-01-21'
     AND slot_distance IS NOT NULL
 ),
 -- Sum of known groups

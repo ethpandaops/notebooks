@@ -10,7 +10,7 @@ WITH proposer_entities AS (
             ELSE 'Other'
         END as entity_group
     FROM mainnet.fct_block_proposer_entity FINAL
-    WHERE slot_start_date_time >= now() - INTERVAL 4 WEEK
+    WHERE slot_start_date_time >= '2025-12-21' AND slot_start_date_time < '2026-01-21'
 )
 SELECT
     pe.entity_group,
@@ -21,7 +21,7 @@ SELECT
 FROM mainnet.fct_attestation_correctness_head h FINAL
 INNER JOIN proposer_entities pe ON h.slot = pe.slot
 LEFT JOIN mainnet.fct_block_blob_count_head b FINAL ON h.slot = b.slot
-WHERE h.slot_start_date_time >= now() - INTERVAL 4 WEEK
+WHERE h.slot_start_date_time >= '2025-12-21' AND h.slot_start_date_time < '2026-01-21'
 AND h.votes_head IS NOT NULL
 GROUP BY pe.entity_group, blob_count
 ORDER BY pe.entity_group, blob_count

@@ -24,8 +24,8 @@ tags:
     tags={["head-votes", "attestations", "validators", "lido-csm", "rocketpool"]}
     description="Comparing head vote accuracy across Lido CSM, Rocketpool, Solo Stakers, and the rest of the network"
     networks={["Ethereum Mainnet"]}
-    startTime="2026-01-01T00:00:00Z"
-    endTime="2026-01-20T23:59:59Z"
+    startTime="2025-12-21T00:00:00Z"
+    endTime="2026-01-21T23:59:59Z"
 />
 
 ```sql attester_by_blobs
