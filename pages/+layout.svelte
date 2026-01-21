@@ -366,4 +366,39 @@
 		color: #9a958d !important;
 		border-bottom-color: #3d3a2a !important;
 	}
+
+	/* Main content text - dark mode contrast fixes */
+	:global(.dark article) {
+		color: #c5c2ba !important;
+	}
+
+	:global(.dark article strong),
+	:global(.dark article b),
+	:global(.dark .markdown strong),
+	:global(.dark .markdown b) {
+		color: #e8e5dc !important;
+	}
+
+	:global(.dark article h1),
+	:global(.dark article h2),
+	:global(.dark article h3),
+	:global(.dark article h4),
+	:global(.dark .markdown h1),
+	:global(.dark .markdown h2),
+	:global(.dark .markdown h3),
+	:global(.dark .markdown h4) {
+		color: #e8e5dc !important;
+	}
+
+	:global(.dark article code),
+	:global(.dark .markdown code) {
+		background: #2a2725 !important;
+		border-color: #3d3a2a !important;
+		color: #d4a090 !important;
+	}
+
+	:global(.dark article a),
+	:global(.dark .markdown a) {
+		color: #d4a090 !important;
+	}
 </style>
