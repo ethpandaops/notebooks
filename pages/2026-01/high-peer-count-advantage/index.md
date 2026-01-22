@@ -138,10 +138,10 @@ A better measure than raw wins is *percentile ranking* - where does this node fa
 
 <LineChart
     data={percentile_hourly}
-    x="hour"
+    x="day"
     y={["P25", "Median", "Mean", "P75"]}
     sort=false
-    title="Hourly Percentile Ranking (Higher = Faster)"
+    title="Daily Percentile Ranking (Higher = Faster)"
     yFmt="num1"
     chartAreaHeight=400
     yMax=100
@@ -149,7 +149,7 @@ A better measure than raw wins is *percentile ranking* - where does this node fa
     echartsOptions={{
         title: {left: 'center'},
         grid: {bottom: 50, left: 70, top: 60, right: 120},
-        xAxis: {type: 'category', name: 'Time', nameLocation: 'center', nameGap: 35, axisLabel: {formatter: (v) => v.substring(5, 10)}},
+        xAxis: {type: 'category', name: 'Date', nameLocation: 'center', nameGap: 35},
         yAxis: {min: 0, max: 100},
         legend: {show: true, right: 10, orient: 'vertical', top: 'center'},
         series: [
@@ -184,17 +184,17 @@ How does our node's timing compare to the network median and fastest nodes over 
 
 <LineChart
     data={timing_hourly}
-    x="hour"
+    x="day"
     y={["Our Node", "Network Median", "Network Fastest"]}
     sort=false
-    title="Hourly Block Arrival Time Comparison"
+    title="Daily Block Arrival Time Comparison"
     yFmt="num0"
     chartAreaHeight=400
     colorPalette={['#2563eb', '#ea580c', '#16a34a']}
     echartsOptions={{
         title: {left: 'center'},
         grid: {bottom: 50, left: 70, top: 60, right: 120},
-        xAxis: {type: 'category', name: 'Time', nameLocation: 'center', nameGap: 35, axisLabel: {formatter: (v) => v.substring(5, 10)}},
+        xAxis: {type: 'category', name: 'Date', nameLocation: 'center', nameGap: 35},
         yAxis: {min: 0},
         legend: {show: true, right: 10, orient: 'vertical', top: 'center'},
         series: [
@@ -226,7 +226,7 @@ How much faster or slower is our node compared to the network median? Negative v
 
 <AreaChart
     data={delta_hourly}
-    x="hour"
+    x="day"
     y="Delta from Median"
     sort=false
     title="Delta from Network Median (Negative = Faster)"
@@ -235,7 +235,7 @@ How much faster or slower is our node compared to the network median? Negative v
     echartsOptions={{
         title: {left: 'center'},
         grid: {bottom: 50, left: 70, top: 60, right: 30},
-        xAxis: {type: 'category', name: 'Time', nameLocation: 'center', nameGap: 35, axisLabel: {formatter: (v) => v.substring(5, 10)}},
+        xAxis: {type: 'category', name: 'Date', nameLocation: 'center', nameGap: 35},
         graphic: [{
             type: 'text',
             left: 15,
