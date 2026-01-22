@@ -145,12 +145,19 @@ A better measure than raw wins is *percentile ranking* - where does this node fa
     yFmt="num1"
     chartAreaHeight=400
     yMax=100
+    colorPalette={['#dc2626', '#2563eb', '#9333ea', '#16a34a']}
     echartsOptions={{
         title: {left: 'center'},
         grid: {bottom: 50, left: 70, top: 60, right: 120},
         xAxis: {type: 'category', name: 'Time', nameLocation: 'center', nameGap: 35},
         yAxis: {min: 0, max: 100},
         legend: {show: true, right: 10, orient: 'vertical', top: 'center'},
+        series: [
+            {name: 'P25', lineStyle: {width: 2}},
+            {name: 'Median', lineStyle: {width: 3}},
+            {name: 'Mean', lineStyle: {width: 2, type: 'dashed'}},
+            {name: 'P75', lineStyle: {width: 2}}
+        ],
         graphic: [
             {
                 type: 'text',
