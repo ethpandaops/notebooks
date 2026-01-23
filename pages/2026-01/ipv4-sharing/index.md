@@ -62,13 +62,6 @@ tags:
             lineStyle: {
                 color: '#2563eb'
             }
-        }],
-        dataZoom: [{
-            type: 'slider',
-            start: 0,
-            end: 100,
-            bottom: 5,
-            height: 30
         }]
     };
 
