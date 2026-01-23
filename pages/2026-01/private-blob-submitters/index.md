@@ -63,9 +63,7 @@ Blob transactions are typically broadcast to the public mempool before being inc
 
 ## Investigation
 
-**Important methodology note:** We monitor blob availability across **[7870 reference nodes](https://lab.ethpandaops.io/ethereum/execution/payloads)** via `engine_getBlobsV2`. When a block arrives, we check whether each node had the blob in its mempool. This doesn't necessarily mean the blob was never in the public mempool, only that it wasn't in the mempool on any of our nodes at the time the block was received for each node.
-
-However, from a practical standpoint, if a blob isn't available to nodes when the block arrives **it's effectively the same as if the blob was never in the public mempool for this node.** These nodes were not able to take advantage of the `engine_getBlobsV2` API.
+**Important methodology note:** We monitor blob availability across **[7870 reference nodes](https://lab.ethpandaops.io/ethereum/execution/payloads)** via `engine_getBlobsV2`. From a practical standpoint, if a blob isn't available to nodes when the block arrives **it's effectively the same as if the blob was never in the public mempool for this node** since these nodes were not able to take advantage of the `engine_getBlobsV2` API. This doesn't necessarily mean the blob was never in the public mempool, only that it wasn't in the mempool on any of our nodes at the time the block was received.
 
 ### Overall Blob Availability
 
