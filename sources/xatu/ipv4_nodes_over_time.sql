@@ -1,13 +1,11 @@
 -- Distinct nodes (peer_ids) observed per hour (Jan 16-23, 2026)
 SELECT
-    if(toHour(toStartOfHour(event_date_time)) = 0,
-       formatDateTime(toStartOfHour(event_date_time), '%m-%d'),
-       '') AS hour,
+    toStartOfHour(event_date_time) AS hour,
     countDistinct(remote_peer_id_unique_key) AS "Distinct Nodes"
 FROM libp2p_synthetic_heartbeat
 WHERE meta_network_name = 'mainnet'
   AND event_date_time >= '2026-01-16 00:00:00'
   AND event_date_time < '2026-01-23 00:00:00'
   AND remote_ip IS NOT NULL
-GROUP BY toStartOfHour(event_date_time)
-ORDER BY toStartOfHour(event_date_time) ASC
+GROUP BY hour
+ORDER BY hour ASC

@@ -77,23 +77,13 @@ This analysis uses data from **synthetic heartbeat** messages - periodic pings t
     sort=false
     title="Distinct Nodes Observed per Hour"
     chartAreaHeight=300
-    xTickMarks=7
+    xAxisTitle="Time (UTC)"
+    yAxisTitle="Distinct Nodes"
     colorPalette={['#2563eb']}
     echartsOptions={{
         title: {left: 'center'},
         grid: {left: 80, bottom: 50, top: 60, right: 30},
-        yAxis: {min: 10000},
-        graphic: [{
-            type: 'text',
-            left: 15,
-            top: 'center',
-            rotation: Math.PI / 2,
-            style: {
-                text: 'Distinct Nodes',
-                fontSize: 12,
-                fill: '#666'
-            }
-        }]
+        yAxis: {min: 10000}
     }}
 />
 
@@ -111,23 +101,13 @@ Over the week, we consistently observe around **10,000-12,000 distinct nodes** p
     sort=false
     title="Distinct Nodes by Client Type"
     chartAreaHeight=350
-    xTickMarks=7
+    xAxisTitle="Time (UTC)"
+    yAxisTitle="Distinct Nodes"
     colorPalette={['#2563eb', '#dc2626', '#16a34a', '#9333ea', '#ea580c', '#0891b2', '#4f46e5', '#84cc16', '#f97316', '#6366f1']}
     echartsOptions={{
         title: {left: 'center'},
         grid: {left: 80, bottom: 50, top: 60, right: 120},
-        legend: {show: true, right: 10, orient: 'vertical', top: 'center'},
-        graphic: [{
-            type: 'text',
-            left: 15,
-            top: 'center',
-            rotation: Math.PI / 2,
-            style: {
-                text: 'Distinct Nodes',
-                fontSize: 12,
-                fill: '#666'
-            }
-        }]
+        legend: {show: true, right: 10, orient: 'vertical', top: 'center'}
     }}
 />
 
