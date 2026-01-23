@@ -23,7 +23,7 @@ tags:
 ### Required Fields
 
 - `title`: The page title (displayed in browser tab and navigation)
-- `description`: Brief description for SEO and page previews
+- `description`: Brief description for SEO and social sharing previews (not displayed on page - the Question section serves as the visible hook)
 
 ### Optional Fields
 
@@ -50,7 +50,7 @@ Use these usernames for the `author` field to show profile pictures:
 
 ## Displaying Page Metadata
 
-Use the `PageMeta` component to display the metadata on the page:
+Use the `PageMeta` component to display metadata. For investigations, also include `networks` and time range:
 
 ```svelte
 <script>
@@ -61,8 +61,13 @@ Use the `PageMeta` component to display the metadata on the page:
     date="2025-01-20"
     author="samcm"
     tags={["tag1", "tag2"]}
+    networks={["Ethereum Mainnet"]}
+    startTime="2025-01-14T00:00:00Z"
+    endTime="2025-01-20T23:59:59Z"
 />
 ```
+
+Note: The `description` prop exists for backwards compatibility but is not displayed. The Question section serves as the visual description.
 
 ## SQL Queries
 
@@ -204,6 +209,19 @@ Use descriptive action-based headers instead of generic "X Analysis" names:
 ### When Proposing
 ```
 
+## Investigation Page Structure
+
+Investigation pages follow a consistent structure. The Question section serves as the visual hook (the frontmatter `description` is only for SEO).
+
+```
+[Title - from frontmatter, rendered by layout]
+[PageMeta - author, date, networks, time range, tags]
+[Question - the research question, visually prominent with blue accent]
+[Background - context and methodology]
+[Investigation - analysis with charts]
+[Takeaways - key findings]
+```
+
 ## Sections
 
 Use the `Section` component to structure investigation pages:
@@ -215,7 +233,7 @@ Use the `Section` component to structure investigation pages:
 
 <Section type="question">
 ## Question
-Your research question here
+Your research question here (this IS the hook - don't duplicate in PageMeta description)
 </Section>
 
 <Section type="background">
@@ -237,7 +255,7 @@ Analysis content with charts
 ```
 
 Section types and their colors:
-- `question` - Blue left border
+- `question` - Blue left border (4px) - the visual hook for the investigation
 - `background` - Gray left border (muted text)
 - `investigation` - Gray left border
-- `takeaways` - Green left border with arrow bullets
+- `takeaways` - Green left border (4px) with arrow bullets

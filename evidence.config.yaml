@@ -59,3 +59,4 @@ plugins:
   datasources:
     "@evidence-dev/duckdb": {}
     "evidence-connector-clickhouse": {}
+    "cached-clickhouse-connector": {}

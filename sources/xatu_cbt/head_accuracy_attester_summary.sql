@@ -22,7 +22,7 @@ known_groups AS (
         count(*) as total
     FROM mainnet.fct_attestation_correctness_by_validator_head h
     INNER JOIN validator_entities ve ON h.attesting_validator_index = ve.validator_index
-    WHERE h.slot_start_date_time >= '2025-12-21' AND h.slot_start_date_time < '2026-01-21'
+    WHERE h.slot_start_date_time >= '2026-01-14' AND h.slot_start_date_time < '2026-01-21'
     AND h.slot_distance IS NOT NULL
     GROUP BY entity_group
 ),
@@ -32,7 +32,7 @@ network_totals AS (
         countIf(slot_distance = 0) as correct_head,
         count(*) as total
     FROM mainnet.fct_attestation_correctness_by_validator_head
-    WHERE slot_start_date_time >= '2025-12-21' AND slot_start_date_time < '2026-01-21'
+    WHERE slot_start_date_time >= '2026-01-14' AND slot_start_date_time < '2026-01-21'
     AND slot_distance IS NOT NULL
 ),
 -- Sum of known groups

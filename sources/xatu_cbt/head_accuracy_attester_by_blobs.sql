@@ -23,7 +23,7 @@ SELECT
 FROM mainnet.fct_attestation_correctness_by_validator_head h
 INNER JOIN validator_entities ve ON h.attesting_validator_index = ve.validator_index
 LEFT JOIN mainnet.fct_block_blob_count_head b FINAL ON h.slot = b.slot
-WHERE h.slot_start_date_time >= '2025-12-21' AND h.slot_start_date_time < '2026-01-21'
+WHERE h.slot_start_date_time >= '2026-01-14' AND h.slot_start_date_time < '2026-01-21'
 AND h.slot_distance IS NOT NULL
 GROUP BY entity_group, blob_count
 ORDER BY entity_group, blob_count

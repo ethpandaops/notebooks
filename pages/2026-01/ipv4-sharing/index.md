@@ -124,7 +124,6 @@ tags:
     date="2026-01-23"
     author="samcm"
     tags={["p2p", "libp2p", "network", "synthetic-heartbeat"]}
-    description="Analyzing how many peer_ids and clients share the same IPv4 address on mainnet"
     networks={["Ethereum Mainnet"]}
     startTime="2026-01-16T00:00:00Z"
     endTime="2026-01-23T00:00:00Z"

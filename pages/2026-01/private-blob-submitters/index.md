@@ -21,7 +21,6 @@ tags:
     date="2026-01-21"
     author="samcm"
     tags={["blobs", "mempool", "l2", "data-availability"]}
-    description="Identifying which L2s and entities submit blobs that aren't available to nodes when blocks arrive"
     networks={["Ethereum Mainnet"]}
     startTime="2026-01-17T00:00:00Z"
     endTime="2026-01-20T23:59:59Z"
@@ -64,9 +63,9 @@ Blob transactions are typically broadcast to the public mempool before being inc
 
 ## Investigation
 
-**Important methodology note:** We monitor blob availability across **[7870 reference nodes](https://lab.ethpandaops.io/ethereum/execution/payloads)** via `engine_getBlobsV2`. When a block arrives, we check whether each node had the blob in its mempool. A blob being "unavailable" means our nodes didn't have it when the block was proposed. This doesn't necessarily mean the blob was never in the public mempool, only that it wasn't in the mempool on any of our nodes at the time the block was received for each node.
+**Important methodology note:** We monitor blob availability across **[7870 reference nodes](https://lab.ethpandaops.io/ethereum/execution/payloads)** via `engine_getBlobsV2`. When a block arrives, we check whether each node had the blob in its mempool. This doesn't necessarily mean the blob was never in the public mempool, only that it wasn't in the mempool on any of our nodes at the time the block was received for each node.
 
-However, from a practical standpoint, if a blob isn't available to nodes when the block arrives **it's effectively the same as if the blob was never in the public mempool.** These nodes were not able to take advantage of the `engine_getBlobsV2` API.
+However, from a practical standpoint, if a blob isn't available to nodes when the block arrives **it's effectively the same as if the blob was never in the public mempool for this node.** These nodes were not able to take advantage of the `engine_getBlobsV2` API.
 
 ### Overall Blob Availability
 

@@ -23,7 +23,6 @@ tags:
     date="2026-01-20"
     author="samcm"
     tags={["head-votes", "attestations", "validators", "lido-csm", "rocketpool"]}
-    description="Comparing head vote accuracy across Lido CSM, Rocketpool, Solo Stakers, and the rest of the network"
     networks={["Ethereum Mainnet"]}
     startTime="2025-12-21T00:00:00Z"
     endTime="2026-01-21T23:59:59Z"

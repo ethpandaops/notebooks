@@ -2,6 +2,9 @@
   "name": "ethpandaops-notebooks",
   "version": "0.0.1",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "node -r dotenv/config node_modules/.bin/evidence build",
     "build:strict": "node -r dotenv/config node_modules/.bin/evidence build:strict",
@@ -21,7 +24,8 @@
     "@evidence-dev/duckdb": "^2.0.0",
     "@evidence-dev/evidence": "^40.1.6",
     "dotenv": "^17.2.3",
-    "evidence-connector-clickhouse": "^0.0.2"
+    "evidence-connector-clickhouse": "^0.0.2",
+    "cached-clickhouse-connector": "*"
   },
   "overrides": {
     "axios": "^1.7.4"

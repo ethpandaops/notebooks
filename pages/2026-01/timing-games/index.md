@@ -21,7 +21,6 @@ tags:
     date="2026-01-20"
     author="samcm"
     tags={["timing-games", "mev", "block-timing", "validators"]}
-    description="Which entities delay their blocks to extract more MEV? A week of timing data analyzed."
     networks={["Ethereum Mainnet"]}
     startTime="2026-01-13T00:00:00Z"
     endTime="2026-01-20T23:59:59Z"

@@ -22,9 +22,46 @@
 		return { ...node, children: filteredChildren };
 	}
 
-	// Filter hidden pages from the manifest
+	/**
+	 * Recursively sort pages by date descending (newest first).
+	 * Sets sidebar_position based on date so Evidence's sorting uses it.
+	 * @param {Object} node - The page manifest node
+	 * @returns {Object} - Node with sidebar_position set by date
+	 */
+	function sortByDateDescending(node) {
+		if (!node) return node;
+
+		// Process children recursively
+		const processedChildren = {};
+		for (const [key, child] of Object.entries(node.children || {})) {
+			processedChildren[key] = sortByDateDescending(child);
+		}
+
+		// Sort children by date descending and assign sidebar_position
+		const sortedEntries = Object.entries(processedChildren).sort(([, a], [, b]) => {
+			const dateA = a.frontMatter?.date ? new Date(a.frontMatter.date).getTime() : 0;
+			const dateB = b.frontMatter?.date ? new Date(b.frontMatter.date).getTime() : 0;
+			return dateB - dateA; // Descending (newest first)
+		});
+
+		// Assign sidebar_position based on sorted order
+		const sortedChildren = {};
+		sortedEntries.forEach(([key, child], index) => {
+			sortedChildren[key] = {
+				...child,
+				frontMatter: {
+					...child.frontMatter,
+					sidebar_position: index + 1
+				}
+			};
+		});
+
+		return { ...node, children: sortedChildren };
+	}
+
+	// Filter hidden pages and sort by date descending
 	$: filteredData = data.pagesManifest
-		? { ...data, pagesManifest: filterHiddenPages(data.pagesManifest) }
+		? { ...data, pagesManifest: sortByDateDescending(filterHiddenPages(data.pagesManifest)) }
 		: data;
 </script>
 
@@ -273,6 +310,40 @@
 		background: #ddd9d1 !important;
 		margin-bottom: 1.25rem !important;
 		margin-left: 0.75rem !important;
+	}
+
+	/* ========== COLLAPSIBLE THIRD-LEVEL SIDEBAR ITEMS ========== */
+
+	/* Hide third-level items by default */
+	:global(aside div.relative.pl-3.border-l) {
+		display: none !important;
+	}
+
+	/* Case 1: Show third-level items when their DIRECT parent second-level is active.
+	   Uses adjacent sibling selectors to chain through consecutive third-level divs. */
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside a.py-1:not(.font-semibold).text-primary + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l) {
+		display: block !important;
+	}
+
+	/* Case 2: Show when navigating to a third-level child page.
+	   Show the active item, its following siblings, and preceding siblings. */
+	:global(aside div.relative.pl-3.border-l:has(a.text-primary)),
+	:global(aside div.relative.pl-3.border-l:has(a.text-primary) + div.relative.pl-3.border-l),
+	:global(aside div.relative.pl-3.border-l:has(a.text-primary) + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside div.relative.pl-3.border-l:has(a.text-primary) + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside div.relative.pl-3.border-l:has(a.text-primary) + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside div.relative.pl-3.border-l:has(a.text-primary) + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l + div.relative.pl-3.border-l),
+	:global(aside div.relative.pl-3.border-l:has(~ div.relative.pl-3.border-l a.text-primary)) {
+		display: block !important;
 	}
 
 	/* ========== DARK MODE ========== */

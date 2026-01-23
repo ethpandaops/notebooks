@@ -3,7 +3,7 @@ WITH min_arrival_per_slot AS (
         slot,
         MIN(seen_slot_start_diff) AS min_arrival_ms
     FROM mainnet.fct_block_first_seen_by_node FINAL
-    WHERE slot_start_date_time >= now() - INTERVAL 1 WEEK
+    WHERE slot_start_date_time >= '2026-01-13' AND slot_start_date_time < '2026-01-21'
     GROUP BY slot
 ),
 entity_stats AS (
@@ -13,7 +13,7 @@ entity_stats AS (
         median(m.min_arrival_ms) / 1000.0 AS median_arrival_seconds
     FROM mainnet.fct_block_proposer_entity p FINAL
     INNER JOIN min_arrival_per_slot m ON p.slot = m.slot
-    WHERE p.slot_start_date_time >= now() - INTERVAL 1 WEEK
+    WHERE p.slot_start_date_time >= '2026-01-13' AND p.slot_start_date_time < '2026-01-21'
     GROUP BY entity
 ),
 global_stats AS (

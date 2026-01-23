@@ -19,6 +19,6 @@ SELECT
     END AS bucket_order,
     count() AS block_count
 FROM mainnet.fct_block_first_seen_by_node FINAL
-WHERE slot_start_date_time >= now() - INTERVAL 1 HOUR
+WHERE slot_start_date_time >= '2026-01-13' AND slot_start_date_time < '2026-01-21'
 GROUP BY timing_bucket, bucket_order
 ORDER BY bucket_order ASC

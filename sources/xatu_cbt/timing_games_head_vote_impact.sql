@@ -3,7 +3,7 @@ WITH slot_timing AS (
         slot,
         MIN(seen_slot_start_diff) / 1000.0 AS arrival_seconds
     FROM mainnet.fct_block_first_seen_by_node FINAL
-    WHERE slot_start_date_time >= now() - INTERVAL 1 WEEK
+    WHERE slot_start_date_time >= '2026-01-13' AND slot_start_date_time < '2026-01-21'
     GROUP BY slot
 ),
 entity_stats AS (
@@ -12,7 +12,7 @@ entity_stats AS (
         median(t.arrival_seconds) AS median_arrival_seconds
     FROM mainnet.fct_block_proposer_entity p FINAL
     INNER JOIN slot_timing t ON p.slot = t.slot
-    WHERE p.slot_start_date_time >= now() - INTERVAL 1 WEEK
+    WHERE p.slot_start_date_time >= '2026-01-13' AND p.slot_start_date_time < '2026-01-21'
     GROUP BY entity
 ),
 global_stats AS (
@@ -42,7 +42,7 @@ head_votes AS (
     FROM mainnet.fct_attestation_correctness_head h FINAL
     INNER JOIN mainnet.fct_block_proposer_entity p FINAL ON h.slot = p.slot
     LEFT JOIN mainnet.fct_block_blob_count_head b FINAL ON h.slot = b.slot
-    WHERE h.slot_start_date_time >= now() - INTERVAL 1 WEEK
+    WHERE h.slot_start_date_time >= '2026-01-13' AND h.slot_start_date_time < '2026-01-21'
       AND h.votes_head IS NOT NULL
 )
 SELECT

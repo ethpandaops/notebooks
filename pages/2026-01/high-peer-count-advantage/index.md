@@ -21,7 +21,6 @@ tags:
     date="2026-01-22"
     author="samcm"
     tags={["block-propagation", "peer-count", "network-performance", "xatu"]}
-    description="Investigating whether a node with 6k+ peers sees blocks faster than the rest of the network"
     networks={["Ethereum Mainnet"]}
     startTime="2026-01-14T00:00:00Z"
     endTime="2026-01-21T23:59:59Z"

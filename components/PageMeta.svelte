@@ -50,17 +50,11 @@
     }
 </script>
 
-{#if date || authorInfoList.length > 0 || tagList.length > 0 || description || networkList.length > 0 || startTime || endTime}
-<div class="relative -mx-4 px-4 pt-6 pb-8 mb-8 bg-base-200/50 border-y border-base-300">
+{#if date || authorInfoList.length > 0 || tagList.length > 0 || networkList.length > 0 || startTime || endTime}
+<div class="relative pl-6 py-4 mb-10 border-l-4 border-l-[#bb5a38]">
     <div class="grid grid-cols-12 gap-8">
         <!-- Left column: 9 cols -->
         <div class="col-span-12 lg:col-span-9">
-            {#if description}
-            <p class="text-lg/7 text-base-content/80 max-w-2xl mb-5">
-                {description}
-            </p>
-            {/if}
-
             {#if networkList.length > 0 || startTime || endTime}
             <div class="flex flex-wrap items-center gap-6 mb-5 text-sm">
                 {#if networkList.length > 0}
@@ -111,27 +105,27 @@
         </div>
 
         <!-- Right column: 3 cols -->
-        <div class="col-span-12 lg:col-span-3 flex flex-col gap-4">
+        <div class="col-span-12 lg:col-span-3 flex flex-col gap-5">
             {#if authorInfoList.length > 0}
-            <div class="flex flex-col gap-2 p-4 rounded-lg bg-base-100 border border-base-300">
+            <div class="flex flex-col gap-2">
                 <span class="text-xs/4 font-medium text-base-content-muted uppercase tracking-wider">
                     {authorInfoList.length > 1 ? 'Authors' : 'Author'}
                 </span>
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-2">
                     {#each authorInfoList as authorInfo}
                     <a
                         href={authorInfo.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="flex items-center gap-3 group"
+                        class="flex items-center gap-2.5 group"
                     >
                         <img
                             src={authorInfo.avatar}
                             alt={authorInfo.name}
-                            class="size-10 rounded-full object-cover ring-2 ring-base-200 group-hover:ring-primary/50 transition-all"
+                            class="size-8 rounded-full object-cover ring-1 ring-base-300 group-hover:ring-[#bb5a38]/50 transition-all"
                             loading="lazy"
                         />
-                        <span class="text-sm/5 font-semibold text-base-content group-hover:text-primary transition-colors">
+                        <span class="text-sm/5 font-medium text-base-content group-hover:text-[#bb5a38] transition-colors">
                             {authorInfo.name}
                         </span>
                     </a>
@@ -141,9 +135,9 @@
             {/if}
 
             {#if date}
-            <div class="flex flex-col gap-2 p-4 rounded-lg bg-base-100 border border-base-300">
+            <div class="flex flex-col gap-1">
                 <span class="text-xs/4 font-medium text-base-content-muted uppercase tracking-wider">Published</span>
-                <span class="text-sm/5 font-semibold text-base-content">
+                <span class="text-sm/5 text-base-content">
                     {formatDate(date)}
                 </span>
             </div>

@@ -1,2 +1,4 @@
 name: xatu
-type: clickhouse
+type: cached-clickhouse
+options:
+  cacheDir: .cache/queries

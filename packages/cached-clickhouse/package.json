@@ -1,0 +1,24 @@
+{
+  "name": "cached-clickhouse-connector",
+  "version": "1.0.0",
+  "description": "Evidence ClickHouse connector with transparent parquet-based caching",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "@clickhouse/client": "^1.6.0",
+    "@evidence-dev/db-commons": "^1.0.1",
+    "parquet-wasm": "^0.6.1"
+  },
+  "evidence": {
+    "datasources": [
+      "cached-clickhouse"
+    ],
+    "icon": "Clickhouse"
+  },
+  "keywords": [
+    "evidence",
+    "evidence-datasource",
+    "clickhouse",
+    "cache"
+  ]
+}

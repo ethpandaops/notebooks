@@ -22,7 +22,6 @@ tags:
     date="2026-01-16"
     author="samcm"
     tags={["snooper", "engine-api", "get-blobs", "latency", "7870"]}
-    description="Measuring the latency impact of deploying rpc-snooper between CL and EL on 7870 reference nodes"
     networks={["Ethereum Mainnet"]}
     startTime="2026-01-15T00:00:00Z"
     endTime="2026-01-16T23:59:59Z"

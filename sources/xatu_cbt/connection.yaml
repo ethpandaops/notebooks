@@ -1,2 +1,4 @@
 name: xatu_cbt
-type: clickhouse
+type: cached-clickhouse
+options:
+  cacheDir: .cache/queries

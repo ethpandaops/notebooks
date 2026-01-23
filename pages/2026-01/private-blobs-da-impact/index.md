@@ -25,7 +25,6 @@ tags:
     date="2026-01-21"
     author="samcm"
     tags={["blobs", "mev", "engine-api", "get-blobs", "data-availability", "peerDAS"]}
-    description="Analyzing how blob mempool propagation affects engine_getBlobsV2 success rates and per-node head timing"
     networks={["Ethereum Mainnet"]}
     startTime="2026-01-14T00:00:00Z"
     endTime="2026-01-21T23:59:59Z"

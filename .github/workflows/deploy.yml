@@ -24,24 +24,34 @@ jobs:
 
       - run: npm ci
 
+      - name: Restore query cache
+        uses: actions/cache@v4
+        with:
+          path: .cache/queries
+          key: query-cache-${{ hashFiles('sources/**/*.sql') }}
+          restore-keys: |
+            query-cache-
+
       - name: Configure ClickHouse Sources
         run: |
           mkdir -p sources/xatu sources/xatu_cbt
           cat > sources/xatu/connection.yaml << EOF
           name: xatu
-          type: clickhouse
+          type: cached-clickhouse
           options:
             url: https://clickhouse.xatu.ethpandaops.io:443
             username: pandaopsinvestigations
             password: ${{ secrets.XATU_PASSWORD }}
+            cacheDir: .cache/queries
           EOF
           cat > sources/xatu_cbt/connection.yaml << EOF
           name: xatu_cbt
-          type: clickhouse
+          type: cached-clickhouse
           options:
             url: https://clickhouse-cbt.xatu.ethpandaops.io:443
             username: pandaopsinvestigations
             password: ${{ secrets.XATU_CBT_PASSWORD }}
+            cacheDir: .cache/queries
           EOF
 
       - name: Build Evidence Site
