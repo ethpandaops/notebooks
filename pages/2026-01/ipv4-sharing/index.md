@@ -77,13 +77,24 @@ This analysis uses data from **synthetic heartbeat** messages - periodic pings t
     sort=false
     title="Distinct Nodes Observed per Hour"
     chartAreaHeight=300
-    xAxisTitle="Time (UTC)"
-    yAxisTitle="Distinct Nodes"
     colorPalette={['#2563eb']}
+    xTickMarks=12
     echartsOptions={{
         title: {left: 'center'},
-        grid: {left: 80, bottom: 50, top: 60, right: 30},
-        yAxis: {min: 10000}
+        grid: {left: 80, bottom: 100, top: 60, right: 30},
+        xAxis: {name: 'Time (UTC)', nameLocation: 'center', nameGap: 75, axisLabel: {rotate: 45, fontSize: 9, interval: 23}},
+        yAxis: {min: 10000},
+        graphic: [{
+            type: 'text',
+            left: 15,
+            top: 'center',
+            rotation: Math.PI / 2,
+            style: {
+                text: 'Distinct Nodes',
+                fontSize: 12,
+                fill: '#666'
+            }
+        }]
     }}
 />
 
