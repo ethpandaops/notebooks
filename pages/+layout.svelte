@@ -3,6 +3,7 @@
 	import '../app.css';
 	import { EvidenceDefaultLayout } from '@evidence-dev/core-components';
 	import { base } from '$app/paths';
+	import { investigations } from '$lib/investigationsStore.js';
 	export let data;
 
 	/**
@@ -59,10 +60,48 @@
 		return { ...node, children: sortedChildren };
 	}
 
+	/**
+	 * Walk the manifest tree and collect investigation pages.
+	 * Only pages at depth 2 (e.g. /2026-01/timing-games) are included,
+	 * excluding month indexes (depth 1) and sub-pages (depth 3+).
+	 * @param {Object} node - The page manifest node
+	 * @param {string[]} segments - Current path segments
+	 * @returns {Array} - List of investigation objects
+	 */
+	function extractInvestigations(node, segments = []) {
+		const results = [];
+		for (const [key, child] of Object.entries(node.children || {})) {
+			const childSegments = [...segments, key];
+			if (childSegments.length === 2 && child.frontMatter) {
+				results.push({
+					title: child.frontMatter.title || key,
+					description: child.frontMatter.description || '',
+					date: child.frontMatter.date || '',
+					author: child.frontMatter.author || '',
+					tags: child.frontMatter.tags || [],
+					href: `/${childSegments.join('/')}`
+				});
+			}
+			results.push(...extractInvestigations(child, childSegments));
+		}
+		return results;
+	}
+
 	// Filter hidden pages and sort by date descending
 	$: filteredData = data.pagesManifest
 		? { ...data, pagesManifest: sortByDateDescending(filterHiddenPages(data.pagesManifest)) }
 		: data;
+
+	// Populate the investigations store from the filtered manifest
+	$: if (filteredData.pagesManifest) {
+		const items = extractInvestigations(filteredData.pagesManifest);
+		items.sort((a, b) => {
+			const da = a.date ? new Date(a.date).getTime() : 0;
+			const db = b.date ? new Date(b.date).getTime() : 0;
+			return db - da;
+		});
+		investigations.set(items);
+	}
 </script>
 
 <EvidenceDefaultLayout
@@ -413,24 +452,6 @@
 
 	:global([data-theme="dark"] aside > div > div.pb-6:not(:first-child)::before) {
 		background: #2a2725 !important;
-	}
-
-	/* Landing page cards - dark mode */
-	:global([data-theme="dark"] article a[href*="/2026-"]) {
-		background: linear-gradient(135deg, rgba(30, 28, 26, 0.9) 0%, rgba(26, 25, 24, 1) 100%) !important;
-		border-left-color: #bb5a38 !important;
-	}
-
-	:global([data-theme="dark"] article a[href*="/2026-"] > div:first-child) {
-		color: #bb5a38 !important;
-	}
-
-	:global([data-theme="dark"] article a[href*="/2026-"] > div:nth-child(2)) {
-		color: #e8e5dc !important;
-	}
-
-	:global([data-theme="dark"] article a[href*="/2026-"] > div:nth-child(3)) {
-		color: #9a958d !important;
 	}
 
 	/* Landing page hero text - dark mode */
