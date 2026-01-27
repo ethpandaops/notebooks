@@ -17,6 +17,13 @@
         border-left: 3px solid var(--color-base-300, #ddd);
     }
 
+    @media (max-width: 640px) {
+        .section-wrapper {
+            padding-left: 0.75rem;
+            margin: 1.5rem 0;
+        }
+    }
+
     .section-inner {
         padding: 0.5rem 0;
     }

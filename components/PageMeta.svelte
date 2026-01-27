@@ -51,12 +51,12 @@
 </script>
 
 {#if date || authorInfoList.length > 0 || tagList.length > 0 || networkList.length > 0 || startTime || endTime}
-<div class="relative pl-6 py-4 mb-10 border-l-4 border-l-[#bb5a38]">
-    <div class="grid grid-cols-12 gap-8">
+<div class="relative pl-4 sm:pl-6 py-4 mb-10 border-l-4 border-l-[#bb5a38]">
+    <div class="grid grid-cols-12 gap-4 sm:gap-8">
         <!-- Left column: 9 cols -->
         <div class="col-span-12 lg:col-span-9">
             {#if networkList.length > 0 || startTime || endTime}
-            <div class="flex flex-wrap items-center gap-6 mb-5 text-sm">
+            <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-6 mb-5 text-sm">
                 {#if networkList.length > 0}
                 <div class="flex items-center gap-2">
                     <span class="text-base-content-muted">Networks:</span>
@@ -70,24 +70,26 @@
                 </div>
                 {/if}
                 {#if startTime || endTime}
-                <div class="flex items-center gap-4">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                     <span class="text-base-content-muted">Time range:</span>
-                    {#if startTime}
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-xs text-base-content-muted">Start</span>
-                        <span class="inline-flex px-2 py-0.5 bg-base-100 border border-base-300 rounded text-xs font-mono text-base-content">
-                            {startTime}
-                        </span>
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-4">
+                        {#if startTime}
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-xs text-base-content-muted">Start</span>
+                            <span class="inline-flex px-2 py-0.5 bg-base-100 border border-base-300 rounded text-xs font-mono text-base-content">
+                                {startTime}
+                            </span>
+                        </div>
+                        {/if}
+                        {#if endTime}
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-xs text-base-content-muted">End</span>
+                            <span class="inline-flex px-2 py-0.5 bg-base-100 border border-base-300 rounded text-xs font-mono text-base-content">
+                                {endTime}
+                            </span>
+                        </div>
+                        {/if}
                     </div>
-                    {/if}
-                    {#if endTime}
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-xs text-base-content-muted">End</span>
-                        <span class="inline-flex px-2 py-0.5 bg-base-100 border border-base-300 rounded text-xs font-mono text-base-content">
-                            {endTime}
-                        </span>
-                    </div>
-                    {/if}
                 </div>
                 {/if}
             </div>

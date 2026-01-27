@@ -492,4 +492,82 @@
 	:global([data-theme="dark"] .markdown a) {
 		color: #d4a090 !important;
 	}
+
+	/* ========== MOBILE RESPONSIVE ========== */
+
+	@media (max-width: 640px) {
+		/* Header - compact on mobile */
+		:global(header) {
+			padding: 0.5rem 0 !important;
+			min-height: 3.5rem !important;
+		}
+
+		/* Smaller logo on mobile */
+		:global(header a[href="/"] img) {
+			height: 2.5rem !important;
+		}
+
+		/* Smaller header text on mobile */
+		:global(header a[href="/"]::after) {
+			font-size: 1rem !important;
+			letter-spacing: 0.12em !important;
+		}
+
+		/* Adjust ethPandaOps subtitle position */
+		:global(header a[href="/"]::before) {
+			font-size: 0.5rem !important;
+			left: 3.5rem !important;
+			bottom: -0.15rem !important;
+		}
+
+		/* Reduce space between header and content */
+		:global(header + div),
+		:global(header + main),
+		:global(body > div > div:nth-child(2)) {
+			margin-top: 0.75rem !important;
+		}
+
+		/* Tables - prevent column shrinking so scrollbox works */
+		:global(table) {
+			min-width: max-content !important;
+		}
+
+		/* Evidence DataTable header cells - prevent truncation */
+		:global(th) {
+			overflow: visible !important;
+			text-overflow: unset !important;
+		}
+
+		/* Evidence DataTable header content - remove negative letter-spacing that compresses headers */
+		:global(th div[class*="tracking-"]) {
+			letter-spacing: normal !important;
+		}
+
+		/* Evidence DataTable scrollbox - ensure it constrains and scrolls */
+		:global(.scrollbox) {
+			max-width: 100% !important;
+			overflow-x: auto !important;
+			-webkit-overflow-scrolling: touch !important;
+		}
+
+		/* Regular markdown tables - horizontal scroll */
+		:global(.markdown table),
+		:global(article > table) {
+			display: block !important;
+			overflow-x: auto !important;
+			-webkit-overflow-scrolling: touch !important;
+		}
+
+		/* Reduce main content padding on mobile */
+		:global(main) {
+			padding-left: 0.5rem !important;
+			padding-right: 0.5rem !important;
+		}
+
+		/* Content article max-width on mobile */
+		:global(article) {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+	}
 </style>
